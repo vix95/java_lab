@@ -9,14 +9,12 @@ public class javaMarkt {
                 .addProduct(new Product("5", "Maslo", 2.69))
                 .addProduct(new Product("6", "Ananas", 1.79));
 
-        cart.printCartItems();
         cart.sortASC(cart.getItems());
-
-        System.out.println("after");
         cart.printCartItems();
 
-        System.out.println("\n--- List of the cheapest product/products ---");
-
-        System.out.println("\n--- List of the most expensive product/products ---");
+        cart.printTheCheapest();
+        cart.printTheMostExpensive();
+        cart.printTheCheapestN(3);
+        cart.printTheMostExpensiveN(3);
     }
 }

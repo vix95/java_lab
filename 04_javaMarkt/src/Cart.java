@@ -59,6 +59,28 @@ public class Cart {
         return items;
     }
 
+    // print the cheapest product from cart
+    public void printTheCheapest() {
+        System.out.println("The cheapest product is " + items.get(0).getProduct().getName());
+    }
+
+    // print the most expensive product from cart
+    public void printTheMostExpensive() {
+        System.out.println("The most expensive product is " + items.get(items.size() - 1).getProduct().getName());
+    }
+
+    // print n the cheapest products from cart
+    public void printTheCheapestN(int n) {
+        System.out.println("List of the cheapest " + n + " products");
+        for (int i = 0; i < n; i++) System.out.println(items.get(i).getProduct().getName());
+    }
+
+    // print n the most expensive products from cart
+    public void printTheMostExpensiveN(int n) {
+        System.out.println("List of the most expensive " + n + " products");
+        for (int i = 0; i < n; i++) System.out.println(items.get(items.size() - 1 - i).getProduct().getName());
+    }
+
     public ArrayList<CartItem> getItems() {
         return items;
     }
