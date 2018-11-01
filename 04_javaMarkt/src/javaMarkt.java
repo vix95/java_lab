@@ -10,8 +10,8 @@ public class javaMarkt {
                 .addProduct(new Product("6", "Ananas", 1.79))
                 .addProduct(new Product("7", "Telewizor", 300));
 
-        cart.sortASC(cart.getItems());
-        cart.printCartItems();
+        cart.sortCart(cart.getItems());
+        cart.printCart();
 
         cart.printTheCheapest();
         cart.printTheMostExpensive();
@@ -22,5 +22,7 @@ public class javaMarkt {
         System.out.println("Total cost w/o discount: " + cart.getTotalPrice());
         cart.orderSummary();
         System.out.println("Total cost with discount: " + cart.getTotalPrice());
+
+        cart.printCart();
     }
 }

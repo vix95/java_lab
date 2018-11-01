@@ -4,8 +4,9 @@ import java.util.Comparator;
 
 public class Cart {
     ArrayList<CartItem> items = new ArrayList<>(); // array of products in cart
-    private double totalPrice; // total price of all products in cart
+    private double totalPrice; // total amount of all products in cart
     private int qtyItems; // count of products in cart
+    private boolean cup; // free cup if total amount is greater than 200 pln
 
     Cart() {
     }
@@ -14,12 +15,13 @@ public class Cart {
     public void printCart() {
         System.out.println("Total cost: " + totalPrice);
         System.out.println("Items qty in cart: " + qtyItems);
+        printCartItems();
     }
 
     // print cart items
     public void printCartItems() {
         for (CartItem item : items) {
-            item.getProduct().printProductInLine();
+            item.printCartInLine();
         }
     }
 
@@ -43,7 +45,7 @@ public class Cart {
     }
 
     // sort ascending
-    public ArrayList<CartItem> sortASC(ArrayList<CartItem> items) {
+    public ArrayList<CartItem> sortCart(ArrayList<CartItem> items) {
         Collections.sort(items, new Comparator<CartItem>() {
             public int compare(CartItem items1, CartItem items2) {
                 if (items1.getProduct().getPrice() == items2.getProduct().getPrice()) {
@@ -84,13 +86,15 @@ public class Cart {
     // order summary
     void orderSummary() {
         checkMoreThan300();
+        addGratisProducts();
+        checkMoreThan200();
+        setTotalPrice(calcTotalPrice()); // recalculate
     }
 
     // check if price is more than 300 pln
     void checkMoreThan300() {
         if (getTotalPrice() > 300) {
             addDiscountToProducts();
-            setTotalPrice(calcTotalPrice());
         }
     }
 
@@ -99,6 +103,35 @@ public class Cart {
         for (CartItem item : items) {
             item.setDiscountPrice(item.getProduct().getPrice() * .95);
         }
+
+        System.out.println("Add promotion: 5% off");
+    }
+
+    // add gratis if customer buy 2 products
+    void addGratisProducts() {
+        if (getQtyItems() > 2) {
+            int gratisQty = getQtyItems() / 3;
+            for (int i = 0; i < gratisQty; i++) {
+                items.get(items.size() - 1 - i).setDiscountPrice(0);
+            }
+
+            if (gratisQty == 1) {
+                System.out.println("Add promotion: " + gratisQty + " product for free");
+            } else {
+                System.out.println("Add promotion: " + gratisQty + " products for free");
+            }
+        }
+    }
+
+    void checkMoreThan200() {
+        if (getTotalPrice() > 300) {
+            addFreeCup();
+            System.out.println("Add promotion: free cup");
+        }
+    }
+
+    private void addFreeCup() {
+        setCup(true);
     }
 
     public ArrayList<CartItem> getItems() {
@@ -123,5 +156,13 @@ public class Cart {
 
     public void setQtyItems(int qtyItems) {
         this.qtyItems = qtyItems;
+    }
+
+    public boolean isCup() {
+        return cup;
+    }
+
+    public void setCup(boolean cup) {
+        this.cup = cup;
     }
 }
