@@ -1,28 +1,15 @@
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
+@SuppressWarnings("WeakerAccess")
 public class Cart {
-    ArrayList<CartItem> items = new ArrayList<>(); // array of products in cart
+    private ArrayList<CartItem> items = new ArrayList<>(); // array of products in cart
     private double totalPrice; // total amount of all products in cart
+    private double totalDiscountPrice; // total discount price
     private int qtyItems; // count of products in cart
-    private boolean cup; // free cup if total amount is greater than 200 pln
+    private boolean cup; // free cup if total amount is greater than 200 amount
+    private boolean discountCoupon; // free discount coupon 30% off for every shops
 
     Cart() {
-    }
-
-    // print cart
-    public void printCart() {
-        System.out.println("Total cost: " + totalPrice);
-        System.out.println("Items qty in cart: " + qtyItems);
-        printCartItems();
-    }
-
-    // print cart items
-    public void printCartItems() {
-        for (CartItem item : items) {
-            item.printCartInLine();
-        }
     }
 
     // add product to cart
@@ -44,62 +31,60 @@ public class Cart {
         return sum;
     }
 
-    // sort ascending
-    public ArrayList<CartItem> sortCart(ArrayList<CartItem> items) {
-        Collections.sort(items, new Comparator<CartItem>() {
-            public int compare(CartItem items1, CartItem items2) {
-                if (items1.getProduct().getPrice() == items2.getProduct().getPrice()) {
-                    int val = items1.getProduct().getName().compareTo(items2.getProduct().getName());
-                    return val;
-                } else if (items1.getProduct().getPrice() > items2.getProduct().getPrice()) {
-                    return -1;
-                } else {
-                    return 1;
-                }
+    // sort firstly by descending price, secondly by ascending name of product
+    public void sortCart(ArrayList<CartItem> items) {
+        items.sort((CartItem items1, CartItem items2) -> {
+            if (items1.getProduct().getPrice() == items2.getProduct().getPrice()) {
+                return items1.getProduct().getName().compareTo(items2.getProduct().getName());
+            } else if (items1.getProduct().getPrice() > items2.getProduct().getPrice()) {
+                return -1;
+            } else {
+                return 1;
             }
         });
-        return items;
     }
 
     // print the cheapest product from cart
     public void printTheCheapest() {
-        System.out.println("The cheapest product is " + items.get(items.size() - 1).getProduct().getName());
+        System.out.println("\nThe cheapest product is " + items.get(items.size() - 1).getProduct().getName());
     }
 
     // print the most expensive product from cart
     public void printTheMostExpensive() {
-        System.out.println("The most expensive product is " + items.get(0).getProduct().getName());
+        System.out.println("\nThe most expensive product is " + items.get(0).getProduct().getName());
     }
 
     // print n the cheapest products from cart
     public void printTheCheapestN(int n) {
-        System.out.println("List of the cheapest " + n + " products");
+        System.out.println("\nList of the cheapest " + n + " products");
         for (int i = 0; i < n; i++) System.out.println(items.get(items.size() - 1 - i).getProduct().getName());
     }
 
     // print n the most expensive products from cart
     public void printTheMostExpensiveN(int n) {
-        System.out.println("List of the most expensive " + n + " products");
+        System.out.println("\nList of the most expensive " + n + " products");
         for (int i = 0; i < n; i++) System.out.println(items.get(i).getProduct().getName());
     }
 
     // order summary
     void orderSummary() {
+        System.out.println();
         checkMoreThan300();
         addGratisProducts();
         checkMoreThan200();
-        setTotalPrice(calcTotalPrice()); // recalculate
+        addDiscountCoupon();
+        setTotalDiscountPrice(calcTotalPrice()); // recalculate
     }
 
-    // check if price is more than 300 pln
-    void checkMoreThan300() {
+    // check if price is more than 300 amount
+    private void checkMoreThan300() {
         if (getTotalPrice() > 300) {
             addDiscountToProducts();
         }
     }
 
     // add discount to all products
-    void addDiscountToProducts() {
+    private void addDiscountToProducts() {
         for (CartItem item : items) {
             item.setDiscountPrice(item.getProduct().getPrice() * .95);
         }
@@ -108,7 +93,7 @@ public class Cart {
     }
 
     // add gratis if customer buy 2 products
-    void addGratisProducts() {
+    private void addGratisProducts() {
         if (getQtyItems() > 2) {
             int gratisQty = getQtyItems() / 3;
             for (int i = 0; i < gratisQty; i++) {
@@ -123,11 +108,17 @@ public class Cart {
         }
     }
 
-    void checkMoreThan200() {
+    // check if price is more than 200 amount
+    private void checkMoreThan200() {
         if (getTotalPrice() > 300) {
             addFreeCup();
             System.out.println("Add promotion: free cup");
         }
+    }
+
+    // add discount coupon 30% off for every shops
+    private void addDiscountCoupon() {
+        setDiscountCoupon(true);
     }
 
     private void addFreeCup() {
@@ -138,16 +129,20 @@ public class Cart {
         return items;
     }
 
-    public void setItems(ArrayList<CartItem> items) {
-        this.items = items;
-    }
-
     public double getTotalPrice() {
         return totalPrice;
     }
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public double getTotalDiscountPrice() {
+        return totalDiscountPrice;
+    }
+
+    public void setTotalDiscountPrice(double totalDiscountPrice) {
+        this.totalDiscountPrice = totalDiscountPrice;
     }
 
     public int getQtyItems() {
@@ -158,11 +153,23 @@ public class Cart {
         this.qtyItems = qtyItems;
     }
 
-    public boolean isCup() {
-        return cup;
-    }
-
     public void setCup(boolean cup) {
         this.cup = cup;
+    }
+
+    public void setDiscountCoupon(boolean discountCoupon) {
+        this.discountCoupon = discountCoupon;
+    }
+
+    @Override
+    public String toString() {
+        return "\nList of products in Cart{" +
+                "items=" + items +
+                ", \ntotalPrice=" + totalPrice +
+                ", totalDiscountPrice=" + totalDiscountPrice +
+                ", qtyItems=" + qtyItems +
+                ", cup=" + cup +
+                ", discountCoupon=" + discountCoupon +
+                '}';
     }
 }
