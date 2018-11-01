@@ -4,11 +4,11 @@ public class Product {
     private double price;
     private double discountPrice;
 
-    Product() {
+    private Product() {
     }
 
     // print product
-    void printProduct() {
+    private void printProduct() {
         System.out.println("code: " + code);
         System.out.println("name: " + name);
         System.out.println("price: " + price);
@@ -16,7 +16,7 @@ public class Product {
     }
 
     // print new product
-    void printNewProduct() {
+    private void printNewProduct() {
         System.out.println("Add new product [code: " + code + ", name: " + name + ", price: " + price + "]");
     }
 
@@ -30,12 +30,12 @@ public class Product {
         this.code = code;
         this.name = name;
         this.price = price;
-        this.discountPrice = 0;
+        this.discountPrice = price;
 
         this.printNewProduct();
     }
 
-    public String getCode() {
+    String getCode() {
         return code;
     }
 

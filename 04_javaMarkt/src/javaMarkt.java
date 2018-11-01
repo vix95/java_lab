@@ -7,7 +7,8 @@ public class javaMarkt {
                 .addProduct(new Product("3", "Jajka", 2.59))
                 .addProduct(new Product("4", "Chleb", 1.79))
                 .addProduct(new Product("5", "Maslo", 2.69))
-                .addProduct(new Product("6", "Ananas", 1.79));
+                .addProduct(new Product("6", "Ananas", 1.79))
+                .addProduct(new Product("7", "Telewizor", 300));
 
         cart.sortASC(cart.getItems());
         cart.printCartItems();
@@ -16,6 +17,10 @@ public class javaMarkt {
         cart.printTheMostExpensive();
         cart.printTheCheapestN(3);
         cart.printTheMostExpensiveN(3);
-        // a
+        // cart.setTotalPrice(cart.calcTotalPrice()); calculate total price in class
+
+        System.out.println("Total cost w/o discount: " + cart.getTotalPrice());
+        cart.orderSummary();
+        System.out.println("Total cost with discount: " + cart.getTotalPrice());
     }
 }

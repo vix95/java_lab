@@ -27,7 +27,7 @@ public class CartItem {
     CartItem(Product product) {
         this();
         this.product = product;
-        this.discountPrice = 0;
+        this.discountPrice = product.getPrice();
 
         this.printAddToCart();
     }

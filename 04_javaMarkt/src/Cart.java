@@ -27,7 +27,7 @@ public class Cart {
     public Cart addProduct(Product product) {
         items.add(new CartItem(product));
         setQtyItems(getQtyItems() + 1);
-        setTotalPrice(calcTotalPrice());
+        setTotalPrice(getTotalPrice() + product.getDiscountPrice());
         return this;
     }
 
@@ -36,7 +36,7 @@ public class Cart {
         double sum = 0;
 
         for (CartItem item : items) {
-            sum += item.getProduct().getPrice();
+            sum += item.getDiscountPrice();
         }
 
         return sum;
@@ -49,7 +49,7 @@ public class Cart {
                 if (items1.getProduct().getPrice() == items2.getProduct().getPrice()) {
                     int val = items1.getProduct().getName().compareTo(items2.getProduct().getName());
                     return val;
-                } else if (items1.getProduct().getPrice() < items2.getProduct().getPrice()) {
+                } else if (items1.getProduct().getPrice() > items2.getProduct().getPrice()) {
                     return -1;
                 } else {
                     return 1;
@@ -61,24 +61,44 @@ public class Cart {
 
     // print the cheapest product from cart
     public void printTheCheapest() {
-        System.out.println("The cheapest product is " + items.get(0).getProduct().getName());
+        System.out.println("The cheapest product is " + items.get(items.size() - 1).getProduct().getName());
     }
 
     // print the most expensive product from cart
     public void printTheMostExpensive() {
-        System.out.println("The most expensive product is " + items.get(items.size() - 1).getProduct().getName());
+        System.out.println("The most expensive product is " + items.get(0).getProduct().getName());
     }
 
     // print n the cheapest products from cart
     public void printTheCheapestN(int n) {
         System.out.println("List of the cheapest " + n + " products");
-        for (int i = 0; i < n; i++) System.out.println(items.get(i).getProduct().getName());
+        for (int i = 0; i < n; i++) System.out.println(items.get(items.size() - 1 - i).getProduct().getName());
     }
 
     // print n the most expensive products from cart
     public void printTheMostExpensiveN(int n) {
         System.out.println("List of the most expensive " + n + " products");
-        for (int i = 0; i < n; i++) System.out.println(items.get(items.size() - 1 - i).getProduct().getName());
+        for (int i = 0; i < n; i++) System.out.println(items.get(i).getProduct().getName());
+    }
+
+    // order summary
+    void orderSummary() {
+        checkMoreThan300();
+    }
+
+    // check if price is more than 300 pln
+    void checkMoreThan300() {
+        if (getTotalPrice() > 300) {
+            addDiscountToProducts();
+            setTotalPrice(calcTotalPrice());
+        }
+    }
+
+    // add discount to all products
+    void addDiscountToProducts() {
+        for (CartItem item : items) {
+            item.setDiscountPrice(item.getProduct().getPrice() * .95);
+        }
     }
 
     public ArrayList<CartItem> getItems() {
