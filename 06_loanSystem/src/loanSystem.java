@@ -25,6 +25,5 @@ public class loanSystem {
         System.out.println(borrower2);
         System.out.println(borrower3);
         System.out.println(borrower4);
-
     }
 }
