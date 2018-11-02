@@ -2,13 +2,14 @@ public class GenderValidate {
     private String gender;
     private boolean isCorrect;
 
+    @SuppressWarnings("WeakerAccess")
     public GenderValidate(String gender, String pesel) {
         this.gender = gender;
         this.isCorrect = Validate(pesel);
     }
 
     private boolean Validate(String pesel) {
-        return checkGender(pesel);
+        return (pesel.length() == 11) && checkGender(pesel);
     }
 
     private int getGenderFromPesel(String pesel) {
@@ -16,7 +17,8 @@ public class GenderValidate {
     }
 
     private boolean checkGender(String pesel) {
-
+        String genderArray[] = {"female", "male"};
+        return genderArray[getGenderFromPesel(pesel) % 2].equals(gender);
     }
 
     @Override
