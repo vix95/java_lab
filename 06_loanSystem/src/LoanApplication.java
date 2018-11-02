@@ -17,8 +17,8 @@ public class LoanApplication {
         this.pesel = new PeselValidate(pesel).toString();
         this.nip = new NipValidate(nip).toString();
         this.bankAccountNumber = new BankAccountNumberValidate(bankAccountNumber).toString();
-        this.dateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
-        this.gender = gender;
+        this.dateOfBirth = new DateOfBirthValidate(new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth), pesel).toDate();
+        this.gender = new GenderValidate(gender, pesel).toString();
     }
 
     @Override
