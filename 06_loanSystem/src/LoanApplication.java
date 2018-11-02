@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @SuppressWarnings("WeakerAccess")
@@ -8,29 +9,28 @@ public class LoanApplication {
     private String nip;
     private String bankAccountNumber;
     private Date dateOfBirth;
-    private enum gender{MALE, FEMALE};
+    private String gender;
 
-    public LoanApplication() {
-    }
-
-    public LoanApplication(String firstName, String surname, String pesel, String nip, String bankAccountNumber, Date dateOfBirth) {
-        this.firstName = firstName;
-        this.surname = surname;
-        this.pesel = pesel;
-        this.nip = nip;
-        this.bankAccountNumber = bankAccountNumber;
-        this.dateOfBirth = dateOfBirth;
+    LoanApplication(String firstName, String surname, String pesel, String nip, String bankAccountNumber, String dateOfBirth, String gender) throws Exception {
+        this.firstName = new FirstNameValidate(firstName).toString();
+        this.surname = new SurnameValidate(surname).toString();
+        this.pesel = new PeselValidate(pesel).toString();
+        this.nip = new NipValidate(nip).toString();
+        this.bankAccountNumber = new BankAccountNumberValidate(bankAccountNumber).toString();
+        this.dateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
+        this.gender = gender;
     }
 
     @Override
     public String toString() {
-        return "LoanApplication{" +
-                "firstName='" + firstName + '\'' +
-                ", surname='" + surname + '\'' +
-                ", pesel='" + pesel + '\'' +
-                ", nip='" + nip + '\'' +
-                ", bankAccountNumber='" + bankAccountNumber + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                '}';
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        return "\nLoanApplication " + hashCode() + " {" +
+                "\nfirstName='" + firstName + '\'' +
+                ", \nsurname='" + surname + '\'' +
+                ", \npesel='" + pesel + '\'' +
+                ", \nnip='" + nip + '\'' +
+                ", \nbankAccountNumber='" + bankAccountNumber + '\'' +
+                ", \ndateOfBirth=" + f.format(dateOfBirth) + '\'' +
+                ", \ngender=" + gender + '}';
     }
 }
