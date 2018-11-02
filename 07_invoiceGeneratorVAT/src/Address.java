@@ -1,18 +1,16 @@
 @SuppressWarnings("WeakerAccess")
 public class Address {
     private String street;
-    private String houseNumber;
     private String city;
     private String region;
-    private String postalCode;
+    private String zipCode;
     private String country;
 
-    public Address(String street, String houseNumber, String city, String region, String postalCode, String country) {
+    public Address(String street, String city, String region, String zipCode, String country) {
         this.street = street;
-        this.houseNumber = houseNumber;
         this.city = city;
         this.region = region;
-        this.postalCode = postalCode;
+        this.zipCode = zipCode;
         this.country = country;
     }
 
@@ -20,10 +18,9 @@ public class Address {
     public String toString() {
         return "Address{" +
                 "street='" + street + '\'' +
-                ", houseNumber='" + houseNumber + '\'' +
                 ", city='" + city + '\'' +
                 ", region='" + region + '\'' +
-                ", postalCode='" + postalCode + '\'' +
+                ", zipCode='" + zipCode + '\'' +
                 ", country='" + country + '\'' +
                 '}';
     }

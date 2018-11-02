@@ -7,14 +7,15 @@ public class InvoiceSystem {
     public InvoiceSystem() {
     }
 
-    public InvoiceSystem addInvoice(InvoiceVat invoice) {
-        invoices.add(invoice);
+    public InvoiceSystem addInvoice(Product product, Company company) {
+        invoices.add(new InvoiceVat().addProduct(product)
+                .addCompany(company));
         return this;
     }
 
     @Override
     public String toString() {
-        return "InvoiceSystem{" +
+        return "\nInvoiceSystem{" +
                 "invoices=" + invoices +
                 '}';
     }

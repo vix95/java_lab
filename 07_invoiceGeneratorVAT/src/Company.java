@@ -1,22 +1,32 @@
 @SuppressWarnings("WeakerAccess")
 public class Company {
-    private String firmName;
-    private Address address;
+    private String companyName;
+    //private Address address;
     private String nip;
     private String bankAccountNumber;
 
-    public Company(String firmName, Address address, String nip, String bankAccountNumber) {
-        this.firmName = firmName;
-        this.address = address;
+    Company() {
+    }
+
+    public Company(String companyName, String nip, String bankAccountNumber) {
+        this.companyName = companyName;
         this.nip = nip;
         this.bankAccountNumber = bankAccountNumber;
+    }
+
+    public Company addAddress(String companyName, String nip, String bankAccountNumber) {
+        this.companyName = companyName;
+        //this.address = address;
+        this.nip = nip;
+        this.bankAccountNumber = bankAccountNumber;
+        return this;
     }
 
     @Override
     public String toString() {
         return "Company{" +
-                "firmName='" + firmName + '\'' +
-                ", address=" + address +
+                "companyName='" + companyName + '\'' +
+                //", address=" + address +
                 ", nip='" + nip + '\'' +
                 ", bankAccountNumber='" + bankAccountNumber + '\'' +
                 '}';

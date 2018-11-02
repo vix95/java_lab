@@ -11,12 +11,25 @@ public class Product {
     }
 
     public Product(String name, int quantity, double netto, double vatTax) {
+        this();
         this.name = name;
         this.quantity = quantity;
         this.netto = netto;
-        this.totalNetto = totalNetto;
+        this.totalNetto = calcTotalNetto();
         this.vatTax = vatTax;
-        this.totalBrutto = totalBrutto;
+        this.totalBrutto = calcTotalBrutto();
+    }
+
+    private double calcTotalNetto() {
+        return netto * quantity;
+    }
+
+    private double calcTotalBrutto() {
+        return totalNetto * (1 + vatTax);
+    }
+
+    public double getTotalBrutto() {
+        return totalBrutto;
     }
 
     @Override

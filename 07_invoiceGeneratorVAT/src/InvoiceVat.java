@@ -11,23 +11,32 @@ public class InvoiceVat {
     private Date dateOfSale;
     private Date dateOfPayment;
 
-    public InvoiceVat(ArrayList<InvoiceItem> items, Company company,
-                      Date dateOfIssue, Date dateOfSale, Date dateOfPayment) {
-        this.items = items;
-        this.totalBrutto = brutto;
+    public InvoiceVat() {
+    }
+
+    public InvoiceVat addProduct(Product product) {
+        items.add(new InvoiceItem(product));
+        this.totalBrutto = calcTotalBrutto();
+        return this;
+    }
+
+    public InvoiceVat addCompany(Company company) {
         this.company = company;
-        this.vatInvoiceNumber = hashCode();
-        this.dateOfIssue = dateOfIssue;
-        this.dateOfSale = dateOfSale;
-        this.dateOfPayment = dateOfPayment;
+        return this;
+    }
+
+    private double calcTotalBrutto() {
+        double brutto = 0;
+        for (InvoiceItem item : items) brutto += item.getProduct().getTotalBrutto();
+        return brutto;
     }
 
     @Override
     public String toString() {
-        return "InvoiceVat{" +
-                "items=" + items +
-                ", totalBrutto=" + totalBrutto +
-                ", company=" + company +
+        return "\n\tInvoiceVat{" +
+                "\n\t\t\titems=" + items +
+                ", \n\t\t\ttotalBrutto=" + totalBrutto +
+                ", \n\t\t\tcompany=" + company +
                 ", vatInvoiceNumber='" + vatInvoiceNumber + '\'' +
                 ", dateOfIssue=" + dateOfIssue +
                 ", dateOfSale=" + dateOfSale +

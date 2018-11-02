@@ -5,13 +5,18 @@ public class InvoiceItem {
     InvoiceItem() {
     }
 
-    public InvoiceItem(Product product) {
+    InvoiceItem(Product product) {
+        this();
         this.product = product;
+    }
+
+    public Product getProduct() {
+        return product;
     }
 
     @Override
     public String toString() {
-        return "InvoiceItem{" +
+        return "\n\t\tInvoiceItem{" +
                 "product=" + product +
                 '}';
     }
