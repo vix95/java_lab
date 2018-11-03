@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @SuppressWarnings("WeakerAccess")
 public class InvoiceVat {
@@ -12,6 +12,14 @@ public class InvoiceVat {
     private Date dateOfPayment;
 
     public InvoiceVat() {
+    }
+
+    public InvoiceVat(String dateOfIssue, String dateOfSale, String dateOfPayment) throws Exception {
+        this();
+        this.vatInvoiceNumber = hashCode();
+        this.dateOfIssue = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfIssue);
+        this.dateOfSale = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfSale);
+        this.dateOfPayment = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfPayment);
     }
 
     public InvoiceVat addProduct(Product product) {
@@ -28,19 +36,20 @@ public class InvoiceVat {
     private double calcTotalBrutto() {
         double brutto = 0;
         for (InvoiceItem item : items) brutto += item.getProduct().getTotalBrutto();
-        return brutto;
+        return Math.round(brutto * 100.0) / 100.0;
     }
 
     @Override
     public String toString() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         return "\n\t\tInvoiceVat{" +
                 "items=" + items +
                 ", \n\t\t\t\ttotalBrutto=" + totalBrutto +
                 ", \n\t\t\t\tcompany=" + company +
                 ", \n\t\t\t\tvatInvoiceNumber='" + vatInvoiceNumber + '\'' +
-                ", \n\t\t\t\tdateOfIssue=" + dateOfIssue +
-                ", \n\t\t\t\tdateOfSale=" + dateOfSale +
-                ", \n\t\t\t\tdateOfPayment=" + dateOfPayment +
+                ", \n\t\t\t\tdateOfIssue=" + formatter.format(dateOfIssue) +
+                ", \n\t\t\t\tdateOfSale=" + formatter.format(dateOfSale) +
+                ", \n\t\t\t\tdateOfPayment=" + formatter.format(dateOfPayment) +
                 '}';
     }
 }

@@ -21,11 +21,11 @@ public class Product {
     }
 
     private double calcTotalNetto() {
-        return netto * quantity;
+        return Math.round(netto * quantity * 100.0) / 100.0;
     }
 
     private double calcTotalBrutto() {
-        return totalNetto * (1 + vatTax);
+        return Math.round((totalNetto * (1 + vatTax)) * 100.0) / 100.0;
     }
 
     public double getTotalBrutto() {
