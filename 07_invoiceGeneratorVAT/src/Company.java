@@ -1,7 +1,7 @@
 @SuppressWarnings("WeakerAccess")
 public class Company {
     private String companyName;
-    //private Address address;
+    private Address address;
     private String nip;
     private String bankAccountNumber;
 
@@ -14,11 +14,8 @@ public class Company {
         this.bankAccountNumber = bankAccountNumber;
     }
 
-    public Company addAddress(String companyName, String nip, String bankAccountNumber) {
-        this.companyName = companyName;
-        //this.address = address;
-        this.nip = nip;
-        this.bankAccountNumber = bankAccountNumber;
+    public Company addAddress(Address address) {
+        this.address = address;
         return this;
     }
 
@@ -26,8 +23,8 @@ public class Company {
     public String toString() {
         return "Company{" +
                 "companyName='" + companyName + '\'' +
-                //", address=" + address +
-                ", nip='" + nip + '\'' +
+                ", \n\t\t\taddress=" + address +
+                ", \n\t\t\tnip='" + nip + '\'' +
                 ", bankAccountNumber='" + bankAccountNumber + '\'' +
                 '}';
     }

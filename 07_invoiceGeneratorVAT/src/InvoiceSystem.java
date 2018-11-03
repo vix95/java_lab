@@ -7,9 +7,8 @@ public class InvoiceSystem {
     public InvoiceSystem() {
     }
 
-    public InvoiceSystem addInvoice(Product product, Company company) {
-        invoices.add(new InvoiceVat().addProduct(product)
-                .addCompany(company));
+    public InvoiceSystem addInvoice(Product product) {
+        //invoices.add(new InvoiceVat(product));
         return this;
     }
 
