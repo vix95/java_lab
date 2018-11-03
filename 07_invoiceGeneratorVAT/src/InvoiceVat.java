@@ -33,14 +33,14 @@ public class InvoiceVat {
 
     @Override
     public String toString() {
-        return "\n\tInvoiceVat{" +
+        return "\n\t\tInvoiceVat{" +
                 "items=" + items +
-                ", \n\t\t\ttotalBrutto=" + totalBrutto +
-                ", \n\t\t\tcompany=" + company +
-                ", \n\t\t\tvatInvoiceNumber='" + vatInvoiceNumber + '\'' +
-                ", \n\t\t\tdateOfIssue=" + dateOfIssue +
-                ", \n\t\t\tdateOfSale=" + dateOfSale +
-                ", \n\t\t\tdateOfPayment=" + dateOfPayment +
+                ", \n\t\t\t\ttotalBrutto=" + totalBrutto +
+                ", \n\t\t\t\tcompany=" + company +
+                ", \n\t\t\t\tvatInvoiceNumber='" + vatInvoiceNumber + '\'' +
+                ", \n\t\t\t\tdateOfIssue=" + dateOfIssue +
+                ", \n\t\t\t\tdateOfSale=" + dateOfSale +
+                ", \n\t\t\t\tdateOfPayment=" + dateOfPayment +
                 '}';
     }
 }

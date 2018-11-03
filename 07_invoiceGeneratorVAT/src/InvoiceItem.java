@@ -16,7 +16,7 @@ public class InvoiceItem {
 
     @Override
     public String toString() {
-        return "\n\t\tInvoiceItem{" +
+        return "\n\t\t\tInvoiceItem{" +
                 "product=" + product +
                 '}';
     }

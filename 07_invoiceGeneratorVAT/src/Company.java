@@ -23,8 +23,8 @@ public class Company {
     public String toString() {
         return "Company{" +
                 "companyName='" + companyName + '\'' +
-                ", \n\t\t\taddress=" + address +
-                ", \n\t\t\tnip='" + nip + '\'' +
+                ", \n\t\t\t\taddress=" + address +
+                ", \n\t\t\t\tnip='" + nip + '\'' +
                 ", bankAccountNumber='" + bankAccountNumber + '\'' +
                 '}';
     }
