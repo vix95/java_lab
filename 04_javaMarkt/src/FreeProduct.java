@@ -8,9 +8,7 @@ public class FreeProduct implements ICanCalculateSpecialOffer {
     public void CalculateOffer(Cart cart) {
         if (this.CanCalculate(cart)) {
             int qtyOfFreeProducts = cart.getQtyOfProducts() / 3;
-            for (int i = 0; i < qtyOfFreeProducts; i++) {
-                 cart.getItems().get(cart.getQtyOfProducts() - 1 - i).setDiscountPrice(0);
-            }
+            for (int i = 0; i < qtyOfFreeProducts; i++) cart.getItems().get(cart.getQtyOfProducts() - 1 - i).setDiscountPrice(0);
         }
     }
 

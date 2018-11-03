@@ -6,10 +6,11 @@ public class FivePercentOff implements ICanCalculateSpecialOffer {
 
     @Override
     public void CalculateOffer(Cart cart) {
-        if (this.CanCalculate(cart))
+        if (this.CanCalculate(cart)) {
             for (CartItem item : cart.getItems()) {
                 item.setDiscountPrice(item.getProduct().getPrice() * 0.95);
             }
+        }
     }
 
     @Override

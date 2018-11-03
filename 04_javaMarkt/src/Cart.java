@@ -3,7 +3,7 @@ import java.util.ArrayList;
 @SuppressWarnings("WeakerAccess")
 public class Cart {
     private ArrayList<CartItem> items = new ArrayList<>();
-    private  ArrayList<ICanCalculateSpecialOffer> promotions = new ArrayList<>();
+    private ArrayList<ICanCalculateSpecialOffer> promotions = new ArrayList<>();
     public double totalPrice;
 
     Cart() {
@@ -27,8 +27,22 @@ public class Cart {
     }
 
     public Cart removePromotion(ICanCalculateSpecialOffer offer) {
-        promotions.remove(offer);
+        for (int i = 0; i < promotions.size(); i++) {
+            if (promotions.get(i).toString().equals(offer.toString())) {
+                promotions.remove(i);
+                return this;
+            }
+        }
+
         return this;
+    }
+
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (this.getClass() != obj.getClass()) return false;
+        if (! (obj instanceof ICanCalculateSpecialOffer)) return false;
+        return false;
     }
 
     public void applyPromotions() {
