@@ -8,21 +8,20 @@ public class javaMarkt {
                 .addProduct(new Product("4", "Bread", 1.79))
                 .addProduct(new Product("5", "Butter", 2.69))
                 .addProduct(new Product("6", "Pineapple", 1.79))
-                .addProduct(new Product("7", "Coffeemaker", 300));
+                .addProduct(new Product("7", "Coffeemaker", 200));
 
-        System.out.println(cart);
-        cart.sortCart(cart.getItems());
+        //cart.printTheCheapest();
+        //cart.printTheMostExpensive();
+        //cart.printTheCheapestN(3);
+        //cart.printTheMostExpensiveN(3);
 
-        cart.printTheCheapest();
-        cart.printTheMostExpensive();
-        cart.printTheCheapestN(3);
-        cart.printTheMostExpensiveN(3);
-        // cart.setTotalPrice(cart.calcTotalPrice()); // calculate total price in class
+        //System.out.println("\nTotal cost w/o discount: " + cart.totalPriceOfProducts() +
+        //        "\nTotal cost with discount: " + cart.totalPriceOfDiscountedProducts());
 
-        cart.orderSummary();
-        System.out.println("\nTotal cost w/o discount: " + cart.getTotalPrice() +
-                "\nTotal cost with discount: " + cart.getTotalDiscountPrice());
-
+        cart.addPromotion(new FreeCup()).applyPromotions();
+        cart.addPromotion(new FivePercentOff()).applyPromotions();
+        cart.addPromotion(new FreeProduct()).applyPromotions();
+        cart.removePromotion(new FreeCup()).applyPromotions();
         System.out.println(cart);
     }
 }

@@ -23,16 +23,24 @@ public class Product {
         this.printNewProduct();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (this.getClass() != obj.getClass()) return false;
+        if (! (obj instanceof Product)) return false;
+
+        Product other = (Product) obj;
+        if (this.getName().equals(other.getName())) return this.getPrice() == other.getPrice();
+        else return false;
+    }
+
     public String getName() {
         return name;
     }
 
     public double getPrice() {
         return price;
-    }
-
-    public double getDiscountPrice() {
-        return discountPrice;
     }
 
     @Override

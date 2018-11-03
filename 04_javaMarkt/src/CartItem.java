@@ -1,12 +1,11 @@
 @SuppressWarnings("WeakerAccess")
 public class CartItem {
-    private Product product; // product as cart item
-    private double discountPrice; // price after discount
+    private Product product;
+    private double discountPrice;
 
     private CartItem() {
     }
 
-    // print item added to cart
     public void printAddToCart() {
         System.out.println("Add to cart " + product);
     }
@@ -28,12 +27,24 @@ public class CartItem {
     }
 
     public void setDiscountPrice(double discountPrice) {
-        this.discountPrice = discountPrice;
+        this.discountPrice = Math.round(discountPrice * 100.0) / 100.0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (this.getClass() != obj.getClass()) return false;
+        if (! (obj instanceof CartItem)) return false;
+
+        CartItem other = (CartItem) obj;
+        if (this.getProduct().equals(other.getProduct())) return this.getDiscountPrice() == other.getDiscountPrice();
+        else return false;
     }
 
     @Override
     public String toString() {
-        return "\nCartItem{" +
+        return "\n\tCartItem{" +
                 "product=" + product +
                 ", discountPrice=" + discountPrice +
                 '}';
