@@ -28,15 +28,27 @@ public class InvoiceVat {
         return this;
     }
 
+    public InvoiceVat removeProduct(Product product) {
+        for (InvoiceItem item : items) {
+            if (item.getProduct().equals(product)) {
+                items.remove(item);
+                this.totalGross = calcTotalGross();
+                return this;
+            }
+        }
+
+        return this;
+    }
+
     public InvoiceVat addCompany(Company company) {
         this.company = company;
         return this;
     }
 
     private double calcTotalGross() {
-        double brutto = 0;
-        for (InvoiceItem item : items) brutto += item.getProduct().getGross();
-        return Math.round(brutto * 100.0) / 100.0;
+        double gross = 0;
+        for (InvoiceItem item : items) gross += item.getProduct().calcGross();
+        return Math.round(gross * 100.0) / 100.0;
     }
 
     @Override

@@ -5,6 +5,7 @@ public class invoiceGenerator {
                 .addProduct(new Product("Apple", 10, 2.59, 0.08))
                 .addProduct(new Product("Cheery", 100, 4.59, 0.08))
                 .addProduct(new Product("Coffeemaker", 3, 329.99, 0.23))
+                .removeProduct(new Product("Coffeemaker", 3, 329.99, 0.23))
                 .addCompany(new Company("Sunrise Titanic",  "856-188-45-49", "PL83 1010 1023 0000 2613 9510 0000")
                         .addAddress(new Address("975 Trails End Road", "Fort Lauderdale", "Florida", "34436", "USA"))))
 
