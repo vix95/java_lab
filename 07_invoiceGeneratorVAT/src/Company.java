@@ -9,6 +9,7 @@ public class Company {
     }
 
     public Company(String companyName, String nip, String bankAccountNumber) {
+        this();
         this.companyName = companyName;
         this.nip = nip;
         this.bankAccountNumber = bankAccountNumber;

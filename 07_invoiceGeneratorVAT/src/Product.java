@@ -2,34 +2,34 @@
 public class Product {
     private String name;
     private int quantity;
-    private double netto;
-    private double totalNetto;
+    private double net;
+    private double totalNet;
     private double vatTax;
-    private double totalBrutto;
+    private double gross;
 
     private Product() {
     }
 
-    public Product(String name, int quantity, double netto, double vatTax) {
+    public Product(String name, int quantity, double net, double vatTax) {
         this();
         this.name = name;
         this.quantity = quantity;
-        this.netto = netto;
-        this.totalNetto = calcTotalNetto();
+        this.net = net;
+        this.totalNet = calcTotalNet();
         this.vatTax = vatTax;
-        this.totalBrutto = calcTotalBrutto();
+        this.gross = calcGross();
     }
 
-    private double calcTotalNetto() {
-        return Math.round(netto * quantity * 100.0) / 100.0;
+    private double calcTotalNet() {
+        return Math.round(net * quantity * 100.0) / 100.0;
     }
 
-    private double calcTotalBrutto() {
-        return Math.round((totalNetto * (1 + vatTax)) * 100.0) / 100.0;
+    private double calcGross() {
+        return Math.round((totalNet * (1 + vatTax)) * 100.0) / 100.0;
     }
 
-    public double getTotalBrutto() {
-        return totalBrutto;
+    public double getGross() {
+        return gross;
     }
 
     @Override
@@ -37,10 +37,10 @@ public class Product {
         return "Product{" +
                 "name='" + name + '\'' +
                 ", quantity=" + quantity +
-                ", netto=" + netto +
-                ", totalNetto=" + totalNetto +
+                ", net=" + net +
+                ", totalNet=" + totalNet +
                 ", vatTax=" + vatTax +
-                ", totalBrutto=" + totalBrutto +
+                ", gross=" + gross +
                 '}';
     }
 }
