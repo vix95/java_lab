@@ -21,7 +21,7 @@ public class Product {
         if (this == obj) return true;
         if (obj == null) return false;
         if (this.getClass() != obj.getClass()) return false;
-        if (! (obj instanceof Product)) return false;
+        if (!(obj instanceof Product)) return false;
 
         Product other = (Product) obj;
         return this.getName().equals(other.getName());
