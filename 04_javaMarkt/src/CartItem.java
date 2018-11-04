@@ -30,6 +30,10 @@ public class CartItem {
         this.discountPrice = Math.round(discountPrice * 100.0) / 100.0;
     }
 
+    public void printProductName() {
+        System.out.println(product.getName());
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

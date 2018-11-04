@@ -37,14 +37,6 @@ public class Cart {
         return this;
     }
 
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (this.getClass() != obj.getClass()) return false;
-        if (! (obj instanceof ICanCalculateSpecialOffer)) return false;
-        return false;
-    }
-
     public void applyPromotions() {
         for (ICanCalculateSpecialOffer promotion : promotions){
             promotion.CalculateOffer(this);
@@ -82,21 +74,23 @@ public class Cart {
     }
 
     public void printTheCheapest() {
-        System.out.println("\nThe cheapest product is " + items.get(items.size() - 1).getProduct().getName());
+        System.out.println("\nThe cheapest product is ");
+        items.get(items.size() - 1).printProductName();
     }
 
     public void printTheMostExpensive() {
-        System.out.println("\nThe most expensive product is " + items.get(0).getProduct().getName());
+        System.out.println("\nThe most expensive product is ");
+        items.get(0).printProductName();
     }
 
     public void printTheCheapestN(int n) {
         System.out.println("\nList of the cheapest " + n + " products");
-        for (int i = 0; i < n; i++) System.out.println(items.get(items.size() - 1 - i).getProduct().getName());
+        for (int i = 0; i < n; i++) items.get(items.size() - 1 - i).printProductName();
     }
 
     public void printTheMostExpensiveN(int n) {
         System.out.println("\nList of the most expensive " + n + " products");
-        for (int i = 0; i < n; i++) System.out.println(items.get(i).getProduct().getName());
+        for (int i = 0; i < n; i++) items.get(i).printProductName();
     }
 
     boolean cupAdded(Cart cart) {

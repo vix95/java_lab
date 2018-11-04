@@ -10,10 +10,10 @@ public class javaMarkt {
                 .addProduct(new Product("6", "Pineapple", 1.79))
                 .addProduct(new Product("7", "Coffeemaker", 100));
 
-        //cart.printTheCheapest();
-        //cart.printTheMostExpensive();
-        //cart.printTheCheapestN(3);
-        //cart.printTheMostExpensiveN(3);
+        cart.printTheCheapest();
+        cart.printTheMostExpensive();
+        cart.printTheCheapestN(3);
+        cart.printTheMostExpensiveN(3);
 
         cart.addPromotion(new FreeCup()).applyPromotions();
         cart.addPromotion(new FivePercentOff()).applyPromotions();
