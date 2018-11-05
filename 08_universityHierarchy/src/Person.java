@@ -1,9 +1,9 @@
 @SuppressWarnings("WeakerAccess")
 public class Person {
-    public String firstName;
-    public String surname;
-    public int yearOfBirth;
-    public String gender;
+    protected String firstName;
+    protected String surname;
+    protected int yearOfBirth;
+    protected String gender;
 
     Person() {
     }
