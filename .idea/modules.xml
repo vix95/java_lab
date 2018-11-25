@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01_hello_world/01_hello_world.iml" filepath="$PROJECT_DIR$/01_hello_world/01_hello_world.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02_silnia/02_silnia.iml" filepath="$PROJECT_DIR$/02_silnia/02_silnia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03_definicja_typu/03_definicja_typu.iml" filepath="$PROJECT_DIR$/03_definicja_typu/03_definicja_typu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04_javaMarkt/04_javaMarkt.iml" filepath="$PROJECT_DIR$/04_javaMarkt/04_javaMarkt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05_geometria/05_geometria.iml" filepath="$PROJECT_DIR$/05_geometria/05_geometria.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06_loanSystem/06_loanSystem.iml" filepath="$PROJECT_DIR$/06_loanSystem/06_loanSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07_invoiceGeneratorVAT/07_invoiceGeneratorVAT.iml" filepath="$PROJECT_DIR$/07_invoiceGeneratorVAT/07_invoiceGeneratorVAT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08_universityHierarchy/08_universityHierarchy.iml" filepath="$PROJECT_DIR$/08_universityHierarchy/08_universityHierarchy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/09_hrSystem/09_hrSystem.iml" filepath="$PROJECT_DIR$/09_hrSystem/09_hrSystem.iml" />
+    </modules>
+  </component>
+</project>
